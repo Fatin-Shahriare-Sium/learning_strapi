@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_mycompo_web_big_names",
+  "info": {
+    "displayName": "web big name",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
