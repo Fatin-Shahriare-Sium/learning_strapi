@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_video_srcs",
+  "info": {
+    "displayName": "content",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content_title": {
+      "type": "string"
+    },
+    "src": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "video",
+        "audio",
+        "pdf",
+        "image"
+      ]
+    },
+    "content_free": {
+      "type": "boolean"
+    }
+  }
+}

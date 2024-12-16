@@ -1,5 +1,5 @@
 /**
- * product controller
+ * checkout controller
  */
 
 import { factories } from "@strapi/strapi";
@@ -12,17 +12,10 @@ const bkashConfig = {
   password: "bkashPassword1",
   secret: "bkashSup3rS3cRet",
 };
-
 const bkash = new BkashGateway(bkashConfig);
-export default factories.createCoreController("api::product.product", ({ strapi }) => ({
-  // async find(ctx) {
-  //   let entry = await strapi.entityService.findMany("api::product.product", {});
-
-  //   console.log("entry", entry);
-  //   return { data: entry };
-  // },
+export default factories.createCoreController("api::checkout.checkout", ({ strapi }) => ({
   async create(ctx) {
-    console.log("ctx in post of ", ctx.request.body);
+    //console.log("ctx in post of ", bkash);
     const paymentRequest = {
       amount: 1000,
       orderID: "ORD1020069",
@@ -31,7 +24,6 @@ export default factories.createCoreController("api::product.product", ({ strapi 
 
     const result = await bkash.createPayment(paymentRequest);
     console.log("result checkout", result);
-
     // strapi.entityService.create("api::product.product", {
     //   ...ctx.request.body,
     // });

@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "single_courses",
+  "info": {
+    "singularName": "single-course",
+    "pluralName": "single-courses",
+    "displayName": "single_course",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "course_name": {
+      "type": "string"
+    },
+    "course_price": {
+      "type": "integer"
+    },
+    "course_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "course_lessons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.lesson"
+    },
+    "course_rating": {
+      "type": "integer"
+    },
+    "course_description": {
+      "type": "blocks"
+    },
+    "course_introVideo": {
+      "type": "string"
+    }
+  }
+}

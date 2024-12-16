@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_lessons",
+  "info": {
+    "displayName": "lesson",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lesson_name": {
+      "type": "string"
+    },
+    "lesson_details": {
+      "type": "richtext"
+    },
+    "lesson_assets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.video-src"
+    }
+  }
+}

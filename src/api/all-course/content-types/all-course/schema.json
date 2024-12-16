@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "messages",
+  "collectionName": "all_courses",
   "info": {
-    "singularName": "message",
-    "pluralName": "messages",
-    "displayName": "message",
+    "singularName": "all-course",
+    "pluralName": "all-courses",
+    "displayName": "All_course",
     "description": ""
   },
   "options": {
@@ -12,10 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "text": {
-      "type": "string"
-    },
-    "enc": {
+    "single_courses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::single-course.single-course"
