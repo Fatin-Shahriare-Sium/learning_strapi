@@ -42,6 +42,11 @@
     },
     "course_introVideo": {
       "type": "string"
+    },
+    "enrolledUsers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_enrolled_user_doc_ids",
+  "info": {
+    "displayName": "enrolledUserDocId"
+  },
+  "options": {},
+  "attributes": {
+    "enrolledUserDocId": {
+      "type": "string"
+    }
+  }
+}

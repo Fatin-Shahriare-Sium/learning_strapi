@@ -11,6 +11,16 @@ export interface MycompoWebBigName extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedEnrolledUserDocId extends Struct.ComponentSchema {
+  collectionName: 'components_shared_enrolled_user_doc_ids';
+  info: {
+    displayName: 'enrolledUserDocId';
+  };
+  attributes: {
+    enrolledUserDocId: Schema.Attribute.String;
+  };
+}
+
 export interface SharedLesson extends Struct.ComponentSchema {
   collectionName: 'components_shared_lessons';
   info: {
@@ -104,6 +114,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'mycompo.web-big-name': MycompoWebBigName;
+      'shared.enrolled-user-doc-id': SharedEnrolledUserDocId;
       'shared.lesson': SharedLesson;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
