@@ -1,9 +1,9 @@
 export default (plugin) => {
   plugin.controllers.user.updateMe = async (ctx) => {
-    console.log("fgauysu");
+    console.log("fgauysu", ctx.request.body);
 
-    console.log("hitting udaper me");
-
+    let { name, phone, profilePicture } = ctx.request.body;
+    console.log("hitting udaper me", ctx.state.user);
     try {
       const user = ctx.state.user;
       if (!user) {
@@ -12,15 +12,12 @@ export default (plugin) => {
       const data = ctx.request.body;
       console.log("data", data);
 
-      // const updatedUser = await strapi
-      //   .documents("plugin::users-permissions.user")
-      //   .update({
-      //     documentId: user.documentId,
-      //     data,
-      //   });
+      const updatedUser = await strapi.documents("plugin::users-permissions.user").update({
+        documentId: user.documentId,
+        data: { username: name, phoneNumber: phone, profilePic: profilePicture },
+      });
 
-      //return ctx.send(updatedUser);
-      return { data };
+      return ctx.send(updatedUser);
     } catch (err) {
       console.error("Error updating user:", err);
       return ctx.badRequest("Unable to update user.");
