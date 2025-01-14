@@ -10,8 +10,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "b230305050@cse.jnu.ac.bd",
-    pass: "aasn qhrt kebo gpcg",
+    user: process.env.MAIL_GMAIL,
+    pass: process.env.MAIL_PASSWORD,
   },
 });
 
