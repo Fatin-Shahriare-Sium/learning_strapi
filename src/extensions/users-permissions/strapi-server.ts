@@ -1,10 +1,15 @@
 export default (plugin) => {
-  plugin.controllers.user.fpass = async (ctx) => {
-    console.log("MANUANNLY FORGET PASSSOWRD");
-    const x = await strapi.query("plugin::users-permissions.user").findOne({ where: { email: "b2303050500000@jnu.cse.ac.bd" } });
-    console.log("x", x);
+  plugin.controllers.user.forgetPassword = async (ctx) => {
+    let { userEmail, newPassword } = ctx.request.body as { userEmail: string; newPassword: string };
+    console.log("MANUANNLY FORGET PASSSOWRD", ctx.request.body);
+    const user = await strapi.query("plugin::users-permissions.user").findOne({ where: { email: userEmail } });
+    let datax = await strapi.documents("plugin::users-permissions.user").update({
+      documentId: user.documentId,
+      data: { password: newPassword },
+    });
+
     return {
-      data: x,
+      data: datax,
     };
   };
   plugin.controllers.user.updateMe = async (ctx) => {
@@ -43,8 +48,8 @@ export default (plugin) => {
     },
     {
       method: "POST",
-      path: "/user/forget",
-      handler: "user.fpass",
+      path: "/user/forget-password",
+      handler: "user.forgetPassword",
       config: {
         prefix: "",
         policies: [],
