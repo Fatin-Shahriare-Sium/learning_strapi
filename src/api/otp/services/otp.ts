@@ -19,9 +19,9 @@ export default factories.createCoreService("api::otp.otp", ({ strapi }) => ({
   async sendMailWithOTP(email, OTPcode) {
     const mailOptions = {
       from: "b230305050@cse.jnu.ac.bd",
-      to: "sium1206@gmail.com",
-      subject: "Allah is Almighty",
-      text: "This is a test email sent using Nodemailer.",
+      to: email,
+      subject: "OTP from LMS",
+      text: `Your otp code is ${OTPcode}`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {

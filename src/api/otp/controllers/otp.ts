@@ -28,6 +28,7 @@ export default factories.createCoreController("api::otp.otp", ({ strapi }) => ({
         code: otpCode,
       },
     });
+    await strapi.service("api::otp.otp").sendMailWithOTP(otpEmail, otpCode);
     console.log("generate otp log", otpData);
     return {
       isOTPGenerated: true,
@@ -37,18 +38,20 @@ export default factories.createCoreController("api::otp.otp", ({ strapi }) => ({
   async verifyOtp(ctx) {
     let { OTPdocumentId, OTPcode } = ctx.request.query as { OTPdocumentId: string; OTPcode: string };
     console.log(ctx.request.query);
-    await strapi.service("api::otp.otp").sendMailWithOTP("sium1206@gmail.com");
-    // let gotOTPData = await strapi.documents("api::otp.otp").findOne({
-    //     documentId: OTPdocumentId,
-    //   });
-    // if (gotOTPData.code == OTPcode) {
-    //   return {
-    //     verifiedOTP: true,
-    //   };
-    // } else {
-    //   return {
-    //     verifiedOTP: false,
-    //   };
-    // }
+
+    let gotOTPData = await strapi.documents("api::otp.otp").findOne({
+      documentId: OTPdocumentId,
+    });
+    console.log(gotOTPData);
+
+    if (gotOTPData.code == OTPcode) {
+      return {
+        verifiedOTP: true,
+      };
+    } else {
+      return {
+        verifiedOTP: false,
+      };
+    }
   },
 }));

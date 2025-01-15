@@ -1,4 +1,12 @@
 export default (plugin) => {
+  plugin.controllers.user.fpass = async (ctx) => {
+    console.log("MANUANNLY FORGET PASSSOWRD");
+    const x = await strapi.query("plugin::users-permissions.user").findOne({ where: { email: "b2303050500000@jnu.cse.ac.bd" } });
+    console.log("x", x);
+    return {
+      data: x,
+    };
+  };
   plugin.controllers.user.updateMe = async (ctx) => {
     console.log("fgauysu", ctx.request.body);
 
@@ -23,15 +31,26 @@ export default (plugin) => {
       return ctx.badRequest("Unable to update user.");
     }
   };
-  plugin.routes["content-api"].routes.push({
-    method: "PUT",
-    path: "/user/me",
-    handler: "user.updateMe",
-    config: {
-      prefix: "",
-      policies: [],
+  plugin.routes["content-api"].routes.push(
+    {
+      method: "PUT",
+      path: "/user/me",
+      handler: "user.updateMe",
+      config: {
+        prefix: "",
+        policies: [],
+      },
     },
-  });
+    {
+      method: "POST",
+      path: "/user/forget",
+      handler: "user.fpass",
+      config: {
+        prefix: "",
+        policies: [],
+      },
+    }
+  );
 
   return plugin;
 };
